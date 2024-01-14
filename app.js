@@ -1,17 +1,23 @@
 const express = require('express');
 require('dotenv').config();
-
+const cors = require('cors');
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
 
 
 
+app.use(cors());
+
 // Routes.
 const indexRoutes = require('./routes/index');
 
 
-app.use('/', indexRoutes);
+app.get('/', (req, res) => {
+    res.send("Hello World");
+})
+
+app.use('/api', indexRoutes);
 
 
 let port = process.env.PORT || 3000;
