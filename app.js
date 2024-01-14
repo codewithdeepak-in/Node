@@ -11,8 +11,6 @@ app.use(express.urlencoded({extended: true}));
 const indexRoutes = require('./routes/index');
 
 
-
-
 app.use('/', indexRoutes);
 
 

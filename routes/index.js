@@ -1,24 +1,27 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
-
+const axios = require('axios');
 
 router.get('/', async(req, res) => {
     try{
-        res.sendFile(path.join(__dirname, '../views/index.html'));
-    }catch(error){
+        res.send('Hello World');
         res.json({message: error.message})
     }
 })
 
 
-router.post('/signup', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
 
-    console.log(username, password);
-    // Handle the signup logic here
+router.get('/github', async(req, res) => {
+    const query = req.query.username;
 
-    res.send('Signup successful');
-});
+    try {
+        const response = await axios.get(`https://api.github.com/users/${query}`);
+        res.json({data: response.data});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({message: 'Error fetching data from GitHub API'});
+    }
+})
+
 module.exports = router;
