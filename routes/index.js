@@ -6,7 +6,6 @@ const axios = require('axios');
 router.get('/', async(req, res) => {
     try{
         res.send('Hello World');
-        res.json({message: error.message})
     }catch(error){
         res.json({message: error.message});
     }
