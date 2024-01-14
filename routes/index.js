@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const axios = require('axios');
+const User = require('../models/user');
+
 
 router.get('/', async(req, res) => {
     try{
@@ -33,8 +35,14 @@ router.get('/github', async(req, res) => {
 
 router.post("/register", async(req, res) => {
     try{
-        console.log('working')
-        res.json(req.body);
+        const user = new User({
+            username: req.body.username,
+            password: req.body.password
+        })
+
+        await user.save();
+
+        res.json({user: user});
     }catch(error){
         res.json({error: error.message});
     }
