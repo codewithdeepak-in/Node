@@ -31,6 +31,15 @@ router.get('/github', async(req, res) => {
 })
 
 
+router.post("/register", async(req, res) => {
+    try{
+        console.log('working')
+        res.json(req.body);
+    }catch(error){
+        res.json({error: error.message});
+    }
+})
+
 module.exports = router;
 
 
