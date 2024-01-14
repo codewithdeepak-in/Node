@@ -1,17 +1,7 @@
 {
-    "name": "node",
     "version": 2,
-    "builds": [
-      {
-        "src": "app.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "app.js"
-      }
-    ]
+    "name": "url-shortner",
+    "builds": [{ "src": "app.js", "use": "@vercel/node" }],
+    "routes": [{ "src": "/(.*)", "dest": "/server.js" }]
   }
   
