@@ -28,6 +28,17 @@
 
                 // can perform ajax call.
                 console.log(username, password);
+                $.ajax({
+                    url: '/register',
+                    method: 'POST',
+                    data: {username, password},
+                    success: function(response){
+                        console.log(response);
+                    },
+                    error: function(error){
+                        console.log(error.message);
+                    }
+                })
             })
         })
     </script>
