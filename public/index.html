@@ -29,7 +29,7 @@
                 // can perform ajax call.
                 console.log(username, password);
                 $.ajax({
-                    url: '/register',
+                    url: 'api/register',
                     method: 'POST',
                     data: {username, password},
                     success: function(response){
