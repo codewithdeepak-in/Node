@@ -8,6 +8,8 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.use(cors());
+app.use(express.static('public')); // Assuming your JavaScript files are in the 'public' folder
+
 
 // Routes.
 const indexRoutes = require('./routes/index');
