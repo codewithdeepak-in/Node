@@ -1,4 +1,4 @@
-## Let's Finish Node.
+## Backend and it's functionality.
 
 
 ## How the Server Works
@@ -26,6 +26,14 @@ The server works by listening for requests from the client. When a request is re
     └── config
         └── config.js
 
-
 ### Deployment of Application.
 
+<pre>
+  1. Environment Variables.
+      package. dotenv.
+      command. npm i dotenv.
+      config. require('dotenv).config();
+
+      use 
+        port = process.env.PORT || 3000;
+</pre>

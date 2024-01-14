@@ -1,4 +1,6 @@
 const express = require('express');
+require('dotenv').config();
+
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
@@ -14,7 +16,7 @@ const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
 
 
-let port = 3000;
+let port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log('Server is responding at ' + port);
