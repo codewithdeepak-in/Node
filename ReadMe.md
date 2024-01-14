@@ -3,9 +3,9 @@
 
 ## How the Server Works
 
-<code>
+  <code>
                         Listen           
-Client ----Express----> Server ---------------> File System
+  Client ----Express----> Server ---------------> File System
   |                        |                        |
   |<----------------- Response <----------------- File |
   |                        |                        |
@@ -13,12 +13,12 @@ Client ----Express----> Server ---------------> File System
   |                        |<----------------- Code |
   |<----------------- Response <----------------- Server
 
-</code>
+  </code>
 
 The server works by listening for requests from the client. When a request is received, the server processes the request and sends a response back to the client. The server uses Express, a web application framework for Node.js, to handle these requests and responses. The server can also interact with the file system to read and write data.
 
 
-<code>
+  <code>
 
     ├── package.json
     ├── app.js
@@ -39,7 +39,7 @@ The server works by listening for requests from the client. When a request is re
     └── config
         └── config.js
 
-</code>
+  </code>
 
 
 ### Deployment of Application.
