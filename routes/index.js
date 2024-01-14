@@ -7,6 +7,8 @@ router.get('/', async(req, res) => {
     try{
         res.send('Hello World');
         res.json({message: error.message})
+    }catch(error){
+        res.json({message: error.message});
     }
 })
 
@@ -24,4 +26,10 @@ router.get('/github', async(req, res) => {
     }
 })
 
+
 module.exports = router;
+
+
+
+
+
