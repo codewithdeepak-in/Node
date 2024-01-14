@@ -5,7 +5,12 @@ const axios = require('axios');
 
 router.get('/', async(req, res) => {
     try{
-        res.send('Hello World');
+        // Check if the path to the file is correct
+        if (path.resolve(__dirname, "../public/index.html")) {
+            res.sendFile(path.resolve(__dirname, "../public/index.html"));
+        } else {
+            throw new Error("File path is incorrect");
+        }
     }catch(error){
         res.json({message: error.message});
     }
