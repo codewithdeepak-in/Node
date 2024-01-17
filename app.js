@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 
 (async function(){
-    const connection = await mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.0oxbzoa.mongodb.net/?retryWrites=true&w=majority`)
+    const connection = await mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.0oxbzoa.mongodb.net/sample_restaurants?retryWrites=true&w=majority`)
     if(connection){
         console.log('Connected to Database.');
     }else{
@@ -28,7 +28,7 @@ app.use(express.static('public')); // Assuming your JavaScript files are in the 
 const indexRoutes = require('./routes/index');
 
 
-app.use('/api', indexRoutes);
+app.use('/', indexRoutes);
 
 
 let port = process.env.PORT || 3000;

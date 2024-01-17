@@ -3,6 +3,7 @@ const path = require('path');
 const router = express.Router();
 const axios = require('axios');
 const User = require('../models/user');
+const Restaurant = require('../models/restaurants');
 
 
 router.get('/', async(req, res) => {
@@ -39,10 +40,39 @@ router.post("/register", async(req, res) => {
             username: req.body.username,
             password: req.body.password
         })
-
         await user.save();
+        const data = await User.find();
 
-        res.json({user: user});
+        res.json({data: data});
+    }catch(error){
+        res.json({error: error.message});
+    }
+})
+
+
+router.get('/restaurant', async(req, res) => {
+    try{
+        const data = await Restaurant.aggregate([
+            {
+                $group: {
+                    _id: "$cuisine",
+                    buildings: { 
+                        $push: {
+                            $concat: ["$address.street", " ","$address.zipcode"]
+                    }
+                }
+                }
+            },
+            {   
+                $project: {
+                    buildings: 1,
+                    country: "$_id",
+                    _id: 0
+                }
+            }
+        ]);
+
+        res.json(data);
     }catch(error){
         res.json({error: error.message});
     }
