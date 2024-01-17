@@ -27,10 +27,10 @@ app.use(express.static(path.join(__dirname, 'public'))); // Assuming your JavaSc
 
 // Routes.
 const indexRoutes = require('./routes/index');
-
+const ApiRoute = require('./routes/api');
 
 app.use('/', indexRoutes);
-
+app.use('/api', ApiRoute)
 
 let port = process.env.PORT || 3000;
 
