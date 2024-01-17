@@ -6,6 +6,10 @@ const User = require('../models/user');
 const Restaurant = require('../models/restaurants');
 
 
+
+
+
+
 router.get('/', async(req, res) => {
     try{
         // Check if the path to the file is correct

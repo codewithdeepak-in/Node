@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+const path = require('path');
 
 
 (async function(){
@@ -21,7 +21,8 @@ app.use(express.json());
 
 
 app.use(cors());
-app.use(express.static('public')); // Assuming your JavaScript files are in the 'public' folder
+// Assuming 'public' is the directory containing your static files
+app.use(express.static(path.join(__dirname, 'public'))); // Assuming your JavaScript files are in the 'public' folder
 
 
 // Routes.
