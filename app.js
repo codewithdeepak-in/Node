@@ -20,7 +20,19 @@ app.use(express.json());
 
 
 
-app.use(cors());
+const allowedOrigins = ['http://localhost:4000', 'https://codewithdeepak.vercel.app'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+}));
+
 // Assuming 'public' is the directory containing your static files
 app.use(express.static(path.join(__dirname, 'public'))); // Assuming your JavaScript files are in the 'public' folder
 
